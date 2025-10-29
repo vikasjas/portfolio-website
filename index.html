@@ -3,53 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio Deployment Notice</title>
+  <title>My Portfolio</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       margin: 0;
-      background-color: #f0f0f0;
-    }
-    .message {
-      background: #fff;
-      padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      max-width: 500px;
-    }
-    h1 {
+      padding: 0;
+      background: #f4f4f4;
       color: #333;
     }
-    p {
-      color: #555;
-    }
-    a {
-      display: inline-block;
-      margin-top: 20px;
-      text-decoration: none;
-      background-color: #0078ff;
+    header {
+      background: #222;
       color: #fff;
-      padding: 10px 20px;
-      border-radius: 5px;
-      transition: background 0.3s;
+      padding: 20px;
+      text-align: center;
     }
-    a:hover {
-      background-color: #005fcc;
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background: #111;
+      padding: 10px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    section {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .project-card {
+      background: #fafafa;
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 5px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #222;
+      color: #fff;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
-  <div class="message">
-    <h1>Your Portfolio is Ready for Deployment!</h1>
-    <p>This placeholder page indicates that your portfolio will be deployed soon via GitHub Pages or Netlify.</p>
-    <a href="https://github.com/new" target="_blank">Deploy to GitHub Pages</a>
-    <br />
-    <a href="https://app.netlify.com/drop" target="_blank">Deploy to Netlify</a>
-  </div>
+  <header>
+    <h1>Your Name</h1>
+    <p>Web Developer | Designer | Creator</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Write a short introduction about yourself, your skills, and experience here.</p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+        <h3>Project 1</h3>
+        <p>Description of your project.</p>
+      </div>
+      <div class="project-card">
+        <h3>Project 2</h3>
+        <p>Description of your project.</p>
+      </div>
+      <div class="project-card">
+        <h3>Project 3</h3>
+        <p>Description of your project.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: yourname@example.com</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Your Name. All rights reserved.</p>
+  </footer>
 </body>
 </html>
+
