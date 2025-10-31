@@ -2,81 +2,49 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Vikas Jasyal | Portfolio</title>
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <!-- CSS File -->
-  <link rel="stylesheet" href="style.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Meta (for nicer link previews) -->
+  <meta name="description" content="Portfolio of Vikas Jasyal — Data Scientist • Designer • Creator" />
 </head>
-
 <body>
-
-  <!-- HEADER SECTION -->
-  <header>
-    <div class="glass-box">
-      <h1>Vikas Jasyal</h1>
-      <p>Data Scientist • Designer • Creator</p>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="glass-box hero">
+      <h1 class="brand">Vikas Jasyal</h1>
+      <p class="tagline">Data Scientist • Designer • Creator</p>
+      <div class="cta-row">
+        <a class="btn primary" href="#/projects">View Projects</a>
+        <a class="btn ghost" href="#/contact">Contact</a>
+      </div>
     </div>
   </header>
 
-  <!-- NAVIGATION -->
-  <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+  <!-- NAV -->
+  <nav class="site-nav">
+    <a data-link href="#/about" class="nav-link">About</a>
+    <a data-link href="#/projects" class="nav-link">Projects</a>
+    <a data-link href="#/contact" class="nav-link">Contact</a>
   </nav>
 
-  <!-- ABOUT SECTION -->
-  <section id="about" class="glass-section">
-    <h2>About Me</h2>
-    <p>
-      I hold Bachelor's and Master's degrees in Mathematics. I work with data, design, and creative problem-solving.
-      I focus on transforming data into meaningful insights and visually engaging experiences.
-    </p>
-  </section>
-
-  <!-- PROJECTS SECTION -->
-  <section id="projects">
-    <h2>Projects</h2>
-
-    <div class="projects">
-
-      <div class="project-card glass-box">
-        <img src="https://www.techspot.com/articles-info/2048/images/2020-07-04-image.jpg">
-        <h3>Machine Learning Model</h3>
-        <p>Built predictive models to identify trends and patterns in complex datasets.</p>
-      </div>
-
-      <div class="project-card glass-box">
-        <img src="https://dashthis.com/media/4150/data-visualization-dashboard.png">
-        <h3>Data Visualization Dashboard</h3>
-        <p>Created interactive dashboards using Python, Tableau, and Power BI.</p>
-      </div>
-
-      <div class="project-card glass-box">
-        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=900&q=80">
-        <h3>AI Business Analytics</h3>
-        <p>Applied AI-driven decision models to optimize business operations.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CONTACT SECTION -->
-  <section id="contact" class="glass-section">
-    <h2>Contact</h2>
-    <p>Email: jasyalvikas@gmail.com</p>
-  </section>
+  <!-- MAIN APP CONTAINER -->
+  <main id="app" aria-live="polite">
+    <!-- Content is rendered here by app.js -->
+  </main>
 
   <!-- FOOTER -->
-  <footer>
-    <p>&copy; 2025 Vikas Jasyal. All rights reserved.</p>
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> Vikas Jasyal. All rights reserved.</p>
   </footer>
 
+  <!-- JS -->
+  <script src="app.js" defer></script>
 </body>
 </html>
-
-
