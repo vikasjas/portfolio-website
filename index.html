@@ -3,48 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vikas Jasyal | Portfolio</title>
+  <title>About | Vikas Jasyal</title>
 
-  <!-- Google Font -->
+  <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- Meta (for nicer link previews) -->
-  <meta name="description" content="Portfolio of Vikas Jasyal — Data Scientist • Designer • Creator" />
 </head>
+
 <body>
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="glass-box hero">
-      <h1 class="brand">Vikas Jasyal</h1>
-      <p class="tagline">Data Scientist • Designer • Creator</p>
-      <div class="cta-row">
-        <a class="btn primary" href="#/projects">View Projects</a>
-        <a class="btn ghost" href="#/contact">Contact</a>
-      </div>
+
+<header class="site-header">
+  <div class="glass-box hero">
+    <h1 class="brand">Vikas Jasyal</h1>
+    <p class="tagline">Data Scientist • Designer • Creator</p>
+
+    <div class="cta-row">
+      <a class="btn primary" href="projects.html">View Projects</a>
+      <a class="btn ghost" href="contact.html">Contact</a>
     </div>
-  </header>
+  </div>
+</header>
 
-  <!-- NAV -->
-  <nav class="site-nav">
-    <a data-link href="#/about" class="nav-link">About</a>
-    <a data-link href="#/projects" class="nav-link">Projects</a>
-    <a data-link href="#/contact" class="nav-link">Contact</a>
-  </nav>
+<nav class="site-nav">
+  <a href="index.html" class="nav-link active">About</a>
+  <a href="projects.html" class="nav-link">Projects</a>
+  <a href="contact.html" class="nav-link">Contact</a>
+</nav>
 
-  <!-- MAIN APP CONTAINER -->
-  <main id="app" aria-live="polite">
-    <!-- Content is rendered here by app.js -->
-  </main>
+<main class="container">
+  <section class="section glass-box">
+    <h2>About Me</h2>
+    <p class="lead">
+      I hold Bachelor's and Master's degrees in Mathematics. I work with data, design, and creative problem-solving.
+      I transform raw information into meaningful insights and visually engaging narratives.
+    </p>
+    <p class="muted" style="margin-top:10px">
+      Tools: Python, SQL, scikit-learn, TensorFlow, Tableau, Power BI, Figma.
+    </p>
+  </section>
+</main>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <p>&copy; <span id="year"></span> Vikas Jasyal. All rights reserved.</p>
-  </footer>
+<footer class="site-footer">
+  <p>&copy; <span id="year"></span> Vikas Jasyal.</p>
+</footer>
 
-  <!-- JS -->
-  <script src="app.js" defer></script>
+<script src="app.js"></script>
 </body>
 </html>

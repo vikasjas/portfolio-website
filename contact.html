@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact | Vikas Jasyal</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-link">About</a>
+  <a href="projects.html" class="nav-link">Projects</a>
+  <a href="contact.html" class="nav-link active">Contact</a>
+</nav>
+
+<main class="container">
+  <section class="section glass-box">
+    <h2>Contact</h2>
+    <p class="lead">Let’s build something meaningful.</p>
+
+    <form id="contactForm" style="margin-top:18px; display:grid; gap:10px;">
+      <input type="text" name="name" placeholder="Your Name" required class="glass-box">
+      <input type="email" name="email" placeholder="Your Email" required class="glass-box">
+      <textarea name="message" rows="5" placeholder="Your Message" required class="glass-box"></textarea>
+      <button class="btn primary" type="submit">Send</button>
+    </form>
+
+    <p class="muted" id="formStatus" style="margin-top:10px;"></p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>&copy; <span id="year"></span> Vikas Jasyal.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
