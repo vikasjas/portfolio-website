@@ -1,7 +1,7 @@
-/* ===== RESET ===== */
+/* Global */
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
-  font-family:"Poppins",sans-serif;
+  font-family:"Sora",sans-serif;
   color:#fff;
   min-height:100vh;
   display:flex;
@@ -10,97 +10,86 @@ body{
   overflow:hidden;
 }
 
-/* ===== BACKGROUND SCENE ===== */
-.background{
+/* Background Image Like Perplexity */
+.bg{
   position:fixed;
   inset:0;
   background:url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=2000&q=80")
     center/cover no-repeat;
   z-index:-3;
-  transform:scale(1.1);
-  filter:saturate(130%) brightness(95%);
+  transform:scale(1.05);
 }
 
-/* Cinematic depth mist */
-.overlay{
+/* Soft Shadows + Mood Lighting */
+.shade{
   position:fixed;
   inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.65));
+  backdrop-filter:blur(2px);
   z-index:-2;
-  background:linear-gradient(
-      rgba(0,0,0,0.35),
-      rgba(0,0,0,0.55)
-  );
-  backdrop-filter:blur(3px);
 }
 
-/* ===== CENTER CONTENT ===== */
-.content{
+/* Center Container */
+.center{
   text-align:center;
-  padding:45px 55px;
-  border-radius:26px;
-  transform:translateY(0);
-  animation:fadeIn 1.3s ease forwards;
+  padding:40px 55px;
+  z-index:2;
 }
 
-/* Glass effect */
-.glass{
-  background:rgba(255,255,255,0.15);
-  backdrop-filter:blur(18px) saturate(170%);
-  border:1px solid rgba(255,255,255,0.35);
-  box-shadow:0 18px 60px rgba(0,0,0,0.45);
+/* Signature Name Style */
+.signature{
+  font-family:"Marck Script",cursive;
+  font-size:3.5rem;
+  font-weight:400;
+  text-shadow:0 0 20px rgba(255,255,255,0.4);
 }
 
-/* ===== TEXT ===== */
-.name{
-  font-size:3rem;
-  font-weight:600;
-  text-shadow:0 0 22px rgba(255,255,255,0.35);
-}
 .subtitle{
-  margin-top:8px;
   font-size:1.1rem;
-  opacity:0.9;
+  margin-top:6px;
+  opacity:.9;
 }
 
-/* ===== BUTTONS ===== */
-.nav-buttons{
-  margin-top:38px;
+/* Buttons */
+.buttons{
+  margin-top:40px;
   display:flex;
   flex-direction:column;
-  gap:14px;
+  gap:12px;
 }
+
 .btn{
-  text-decoration:none;
-  color:#111;
-  background:#fff;
-  padding:14px 20px;
-  border-radius:14px;
   font-weight:600;
+  text-decoration:none;
+  padding:14px 20px;
+  border-radius:12px;
   transition:.3s ease;
 }
-.btn:hover{
-  background:#eaeaea;
+
+/* White Buttons (Like Perplexity Apple/Google) */
+.btn.white{
+  background:#fff;
+  color:#111;
+}
+.btn.white:hover{
+  background:#f2f2f2;
   transform:translateY(-3px);
 }
-.btn.secondary{
-  background:rgba(255,255,255,0.18);
+
+/* Dark Button */
+.btn.dark{
+  background:rgba(0,0,0,.55);
   color:#fff;
-  border:1px solid rgba(255,255,255,0.55);
+  border:1px solid rgba(255,255,255,.25);
 }
-.btn.secondary:hover{
-  background:rgba(255,255,255,0.35);
-}
-
-/* ===== ANIMATION ===== */
-@keyframes fadeIn{
-  from{opacity:0;transform:translateY(20px);}
-  to{opacity:1;transform:translateY(0);}
+.btn.dark:hover{
+  background:rgba(255,255,255,.18);
+  border-color:rgba(255,255,255,.45);
+  transform:translateY(-3px);
 }
 
-/* ===== RESPONSIVE ===== */
-@media(max-width:600px){
-  .content{width:85%;padding:35px 20px;}
-  .name{font-size:2.1rem;}
-}
+/* Smooth Fade In */
+body{opacity:0;}
+
 
 

@@ -1,9 +1,9 @@
-// Smooth fade on load
-document.body.style.opacity = "0";
+// Fade in effect
 window.addEventListener("load", () => {
-  document.body.style.transition = "opacity 1.5s ease";
+  document.body.style.transition = "opacity 1.4s ease";
   document.body.style.opacity = "1";
 });
+
 
 
   
