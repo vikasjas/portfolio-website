@@ -351,3 +351,46 @@ p.lead { opacity: 0.95; }
   .project-thumb{ height: 150px; }
 >>>>>>> e8418103d366a28940b531f6f901677cf31b6c72
 }
+/* ========== AURORA SKY EFFECT ========== */
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+
+  background: radial-gradient(
+      circle at 30% 120%,
+      rgba(0, 255, 180, 0.35) 0%,
+      rgba(0, 140, 255, 0.3) 30%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 80% -10%,
+      rgba(255, 0, 200, 0.45) 0%,
+      rgba(0, 200, 255, 0.25) 30%,
+      transparent 70%
+    );
+
+  filter: blur(80px) saturate(180%);
+  animation: auroraFlow 18s ease-in-out infinite alternate;
+}
+
+/* Smooth motion of aurora */
+@keyframes auroraFlow {
+  0% {
+    transform: translateY(0px) translateX(0px) scale(1.1);
+    opacity: 0.65;
+  }
+  50% {
+    transform: translateY(-40px) translateX(20px) scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-80px) translateX(-20px) scale(1.15);
+    opacity: 0.75;
+  }
+}
