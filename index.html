@@ -1,37 +1,564 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vikas Jasyal | Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vikas Jasyal - Data Scientist Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <!-- Sora Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <!-- Signature Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            overflow-x: hidden;
+            background: #0a0e27;
+            color: #fff;
+        }
 
-  <link rel="stylesheet" href="style.css" />
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .bg-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 2;
+        }
+
+        .bookshelf {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 280px;
+            height: 100%;
+            background: linear-gradient(to left, rgba(30, 20, 15, 0.95), transparent);
+            z-index: 3;
+            padding: 20px;
+        }
+
+        .books {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            height: 100%;
+            align-content: start;
+        }
+
+        .book {
+            height: 120px;
+            border-radius: 3px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 5px;
+            width: 2px;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .book:hover {
+            transform: translateY(-8px);
+        }
+
+        .book:nth-child(1) { background: linear-gradient(to right, #8B4513, #A0522D); }
+        .book:nth-child(2) { background: linear-gradient(to right, #2C5F2D, #3F7F40); }
+        .book:nth-child(3) { background: linear-gradient(to right, #8B0000, #A52A2A); }
+        .book:nth-child(4) { background: linear-gradient(to right, #1C3F5C, #2E5C7F); }
+        .book:nth-child(5) { background: linear-gradient(to right, #6B4423, #8B5A3C); }
+        .book:nth-child(6) { background: linear-gradient(to right, #4A6B2C, #5F8A37); }
+        .book:nth-child(7) { background: linear-gradient(to right, #8B7355, #A0866F); }
+        .book:nth-child(8) { background: linear-gradient(to right, #2F4F4F, #3F6363); }
+        .book:nth-child(9) { background: linear-gradient(to right, #8B4789, #A05B9E); }
+        .book:nth-child(10) { background: linear-gradient(to right, #556B2F, #6B8E23); }
+        .book:nth-child(11) { background: linear-gradient(to right, #8B4726, #A0522D); }
+        .book:nth-child(12) { background: linear-gradient(to right, #483D8B, #5A4FCF); }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            max-width: 1100px;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .profile-section {
+            margin-bottom: 60px;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-image {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 55px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #ffffff;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+            letter-spacing: 1px;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: #64c8ff;
+            margin-bottom: 30px;
+            font-weight: 400;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .bio {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+            color: #e8e8e8;
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+
+        .skill-tag {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: default;
+            backdrop-filter: blur(10px);
+        }
+
+        .skill-tag:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .project-card {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            border-color: rgba(100, 200, 255, 0.5);
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .project-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #64c8ff;
+        }
+
+        .project-desc {
+            color: #d8d8d8;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tech-badge {
+            padding: 5px 12px;
+            background: rgba(100, 200, 255, 0.2);
+            border-radius: 12px;
+            font-size: 0.8rem;
+            color: #64c8ff;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 16px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: rgba(255, 255, 255, 0.95);
+            color: #0a0e27;
+            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.5);
+            background: #ffffff;
+        }
+
+        .btn-secondary {
+            background: rgba(0, 0, 0, 0.4);
+            color: #ffffff;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 0, 0, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #ffffff;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        @media (max-width: 768px) {
+            .bookshelf {
+                width: 180px;
+            }
+
+            .books {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <div class="hero">
+        <div class="background">
+            <svg class="bg-image" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#2c3e50;stop-opacity:1" />
+                        <stop offset="40%" style="stop-color:#34495e;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#2c3e50;stop-opacity:1" />
+                    </linearGradient>
+                    <linearGradient id="grassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#4a5a3a;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#2a3a1a;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                
+                <!-- Sky -->
+                <rect width="1920" height="1080" fill="url(#skyGrad)"/>
+                
+                <!-- Clouds -->
+                <ellipse cx="500" cy="120" rx="120" ry="50" fill="rgba(255,255,255,0.12)" opacity="0.8"/>
+                <ellipse cx="560" cy="110" rx="90" ry="40" fill="rgba(255,255,255,0.1)" opacity="0.8"/>
+                <ellipse cx="850" cy="180" rx="140" ry="55" fill="rgba(255,255,255,0.08)" opacity="0.7"/>
+                <ellipse cx="1300" cy="140" rx="110" ry="45" fill="rgba(255,255,255,0.1)" opacity="0.8"/>
+                
+                <!-- Back trees (darker, smaller) -->
+                <ellipse cx="150" cy="520" rx="70" ry="100" fill="#0f1f0f" opacity="0.6"/>
+                <ellipse cx="1750" cy="500" rx="90" ry="120" fill="#0f1f0f" opacity="0.6"/>
+                
+                <!-- Mid trees -->
+                <ellipse cx="200" cy="450" rx="85" ry="130" fill="#1a2a1a"/>
+                <rect x="175" y="500" width="50" height="180" fill="#1f1510"/>
+                
+                <ellipse cx="1700" cy="480" rx="105" ry="150" fill="#1a3a1a"/>
+                <rect x="1670" y="540" width="60" height="200" fill="#2d1810"/>
+                
+                <!-- Garden path -->
+                <path d="M 700 680 Q 860 780 1000 950" stroke="#6a7450" stroke-width="100" fill="none" opacity="0.5"/>
+                <path d="M 720 690 Q 870 785 990 940" stroke="#7a8460" stroke-width="60" fill="none" opacity="0.4"/>
+                
+                <!-- Flowers clusters -->
+                <g opacity="0.9">
+                    <!-- Purple flowers left -->
+                    <circle cx="650" cy="720" r="16" fill="#9b59b6"/>
+                    <circle cx="670" cy="710" r="14" fill="#8e44ad"/>
+                    <circle cx="635" cy="705" r="12" fill="#a569bd"/>
+                    <circle cx="655" cy="735" r="13" fill="#884ea0"/>
+                    
+                    <!-- Orange flowers mid -->
+                    <circle cx="1050" cy="780" r="18" fill="#e67e22"/>
+                    <circle cx="1075" cy="770" r="16" fill="#d35400"/>
+                    <circle cx="1030" cy="765" r="14" fill="#f39c12"/>
+                    <circle cx="1060" cy="795" r="15" fill="#dc7633"/>
+                    
+                    <!-- Yellow flowers -->
+                    <circle cx="820" cy="790" r="15" fill="#f39c12"/>
+                    <circle cx="840" cy="780" r="13" fill="#f4d03f"/>
+                    <circle cx="805" cy="775" r="12" fill="#f7dc6f"/>
+                    
+                    <!-- Pink/Purple flowers right -->
+                    <circle cx="1180" cy="820" r="17" fill="#e74c3c"/>
+                    <circle cx="1200" cy="810" r="15" fill="#c0392b"/>
+                    <circle cx="1165" cy="835" r="14" fill="#ec7063"/>
+                    
+                    <!-- More purple scattered -->
+                    <circle cx="730" cy="750" r="13" fill="#9b59b6"/>
+                    <circle cx="950" cy="810" r="14" fill="#8e44ad"/>
+                    <circle cx="1120" cy="790" r="12" fill="#a569bd"/>
+                </g>
+                
+                <!-- Grass foreground -->
+                <rect x="0" y="680" width="1920" height="400" fill="url(#grassGrad)"/>
+                
+                <!-- Grass texture details -->
+                <g opacity="0.3">
+                    <path d="M 100 720 Q 120 700 140 720" stroke="#5a6a4a" stroke-width="2" fill="none"/>
+                    <path d="M 300 750 Q 320 730 340 750" stroke="#5a6a4a" stroke-width="2" fill="none"/>
+                    <path d="M 500 780 Q 520 760 540 780" stroke="#5a6a4a" stroke-width="2" fill="none"/>
+                    <path d="M 1400 760 Q 1420 740 1440 760" stroke="#5a6a4a" stroke-width="2" fill="none"/>
+                    <path d="M 1600 790 Q 1620 770 1640 790" stroke="#5a6a4a" stroke-width="2" fill="none"/>
+                </g>
+            </svg>
+        </div>
 
-  <div class="bg"></div>
-  <div class="shade"></div>
+        <div class="overlay"></div>
 
-  <main class="center">
-    <div class="logo-block">
-      <h1 class="signature">Vikas Jasyal</h1>
-      <p class="subtitle">Data Scientist • Designer • Creator</p>
+        <div class="bookshelf">
+            <div class="books">
+                <div class="book"></div>
+                <div class="book"></div>
+                <div class="book"></div>
+                <div class="book"></div>
+                <div class="book"></div>
+                <div class="book"></div>
+                <div class="book"></div>
+                <div class="book"></div>
+                <div class="book"></div>
+                <div class="book"></div>
+                <div class="book"></div>
+                <div class="book"></div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="profile-section">
+                <div class="profile-image">👨‍💻</div>
+                <h1>Vikas Jasyal</h1>
+                <p class="tagline">Data Scientist & Machine Learning Engineer</p>
+                <p class="bio">
+                    Passionate about transforming data into actionable insights. Specialized in predictive modeling, 
+                    deep learning, and statistical analysis. I build intelligent solutions that drive business decisions 
+                    and create meaningful impact through data-driven approaches.
+                </p>
+                
+                <div class="skills">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">R</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">TensorFlow</span>
+                    <span class="skill-tag">PyTorch</span>
+                    <span class="skill-tag">Scikit-learn</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">NumPy</span>
+                    <span class="skill-tag">Tableau</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">Docker</span>
+                </div>
+            </div>
+
+            <section>
+                <h2>Featured Projects</h2>
+                <div class="projects">
+                    <div class="project-card">
+                        <div class="project-icon">🧠</div>
+                        <h3 class="project-title">Predictive Analytics Platform</h3>
+                        <p class="project-desc">
+                            Built an end-to-end ML pipeline for customer churn prediction with 92% accuracy, 
+                            reducing customer attrition by 25%.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">XGBoost</span>
+                            <span class="tech-badge">FastAPI</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-icon">📊</div>
+                        <h3 class="project-title">NLP Sentiment Analyzer</h3>
+                        <p class="project-desc">
+                            Developed a real-time sentiment analysis system processing 10M+ tweets daily 
+                            for brand monitoring and market research.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">BERT</span>
+                            <span class="tech-badge">Hugging Face</span>
+                            <span class="tech-badge">Kafka</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-icon">🎯</div>
+                        <h3 class="project-title">Computer Vision System</h3>
+                        <p class="project-desc">
+                            Created an automated quality control system using CNNs, achieving 98% defect 
+                            detection accuracy in manufacturing.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">PyTorch</span>
+                            <span class="tech-badge">OpenCV</span>
+                            <span class="tech-badge">ResNet</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="cta-buttons">
+                <button class="btn btn-primary">View All Projects</button>
+                <button class="btn btn-secondary">Download Resume</button>
+            </div>
+
+            <div class="social-links">
+                <div class="social-link" title="LinkedIn">💼</div>
+                <div class="social-link" title="GitHub">⚡</div>
+                <div class="social-link" title="Twitter">🐦</div>
+                <div class="social-link" title="Email">📧</div>
+            </div>
+        </div>
     </div>
-
-    <div class="buttons">
-      <a href="about.html" class="btn white">About Me</a>
-      <a href="projects.html" class="btn white">Projects</a>
-      <a href="contact.html" class="btn dark">Contact</a>
-    </div>
-  </main>
-
-  <script src="app.js"></script>
 </body>
 </html>
 
